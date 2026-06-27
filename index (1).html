@@ -1,0 +1,3793 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MARKETING AI HUB | Automatización con IA para PYMEs</title>
+    <meta name="description" content="El sistema nervioso inteligente de tu negocio. Automatización con IA para PYMEs latinoamericanas.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ===== CSS VARIABLES - COLOR SYSTEM ===== */
+        :root {
+            --hub-obsidian: #0A0C10;
+            --hub-midnight: #111520;
+            --hub-navy: #141B2D;
+            --hub-electric: #1E6FFF;
+            --hub-pulse: #00D4A0;
+            --hub-aurora: #7B61FF;
+            --hub-amber: #FF8C42;
+            --hub-slate: #8892A4;
+            --hub-mist: #C8D0E0;
+            --hub-white: #F0F4FF;
+            
+            /* Typography */
+            --font-display: 'Syne', sans-serif;
+            --font-body: 'DM Sans', sans-serif;
+            --font-mono: 'DM Mono', monospace;
+            
+            /* Transitions */
+            --transition-fast: 0.2s ease;
+            --transition-smooth: 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+        }
+        
+        /* ===== RESET & BASE ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+            scrollbar-color: var(--hub-electric) var(--hub-midnight);
+            scrollbar-width: thin;
+        }
+        
+        body {
+            font-family: var(--font-body);
+            background-color: var(--hub-obsidian);
+            color: var(--hub-white);
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: var(--hub-midnight);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--hub-electric);
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--hub-aurora);
+        }
+        
+        /* ===== TYPOGRAPHY ===== */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-display);
+            font-weight: 700;
+            line-height: 1.2;
+        }
+        
+        h1 { font-size: clamp(2.5rem, 8vw, 4.5rem); letter-spacing: -1px; }
+        h2 { font-size: clamp(2rem, 6vw, 3.5rem); letter-spacing: -0.5px; }
+        h3 { font-size: clamp(1.5rem, 4vw, 2.5rem); }
+        h4 { font-size: 1.5rem; }
+        
+        p { font-size: 1rem; font-weight: 300; }
+        .text-sm { font-size: 0.875rem; }
+        .text-xs { font-size: 0.75rem; }
+        
+        .text-muted { color: var(--hub-slate); }
+        .text-secondary { color: var(--hub-mist); }
+        
+        a {
+            color: var(--hub-electric);
+            text-decoration: none;
+            transition: color var(--transition-fast);
+        }
+        
+        a:hover { color: var(--hub-aurora); }
+        
+        /* ===== CONTAINERS & LAYOUT ===== */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        section {
+            padding: 5rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .section-dark { background-color: var(--hub-obsidian); }
+        .section-midnight { background-color: var(--hub-midnight); }
+        
+        /* ===== BUTTONS ===== */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.875rem 1.75rem;
+            border: none;
+            border-radius: 8px;
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            position: relative;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--hub-electric) 0%, var(--hub-aurora) 100%);
+            color: var(--hub-white);
+            box-shadow: 0 0 40px rgba(30, 111, 255, 0.15);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 60px rgba(30, 111, 255, 0.3);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: var(--hub-electric);
+            border: 1.5px solid rgba(30, 111, 255, 0.5);
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(30, 111, 255, 0.1);
+            border-color: var(--hub-electric);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            color: var(--hub-white);
+            border: 1px solid rgba(136, 146, 164, 0.3);
+        }
+        
+        .btn-outline:hover {
+            border-color: var(--hub-electric);
+            color: var(--hub-electric);
+        }
+        
+        /* Ripple effect */
+        .btn::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+        }
+        
+        .btn:active::after {
+            animation: ripple 0.6s ease-out;
+        }
+        
+        @keyframes ripple {
+            to {
+                width: 300px;
+                height: 300px;
+                opacity: 0;
+            }
+        }
+        
+        /* ===== CARDS ===== */
+        .card {
+            background: var(--hub-midnight);
+            border: 0.5px solid rgba(136, 146, 164, 0.15);
+            border-top: 2px solid var(--hub-electric);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: all var(--transition-smooth);
+            backdrop-filter: blur(12px);
+        }
+        
+        .card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(30, 111, 255, 0.3);
+            box-shadow: 0 0 40px rgba(30, 111, 255, 0.15);
+        }
+        
+        /* ===== GRID ===== */
+        .grid {
+            display: grid;
+            gap: 2rem;
+        }
+        
+        .grid-2 { grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); }
+        .grid-3 { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+        .grid-4 { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+        
+        @media (max-width: 768px) {
+            .grid-3, .grid-4 { grid-template-columns: 1fr; }
+            .grid-2 { grid-template-columns: 1fr; }
+        }
+        
+        /* ===== BADGES & LABELS ===== */
+        .badge {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: rgba(30, 111, 255, 0.1);
+            color: var(--hub-electric);
+            border: 1px solid rgba(30, 111, 255, 0.3);
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            font-family: var(--font-mono);
+            letter-spacing: 0.5px;
+        }
+        
+        .badge-success {
+            background: rgba(0, 212, 160, 0.1);
+            color: var(--hub-pulse);
+            border-color: rgba(0, 212, 160, 0.3);
+        }
+        
+        .badge-premium {
+            background: rgba(123, 97, 255, 0.1);
+            color: var(--hub-aurora);
+            border-color: rgba(123, 97, 255, 0.3);
+        }
+        
+        /* ===== SECTION TITLES ===== */
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title h2 {
+            margin-bottom: 1rem;
+        }
+        
+        .section-subtitle {
+            font-size: 1.125rem;
+            color: var(--hub-mist);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* ===== LOADER ===== */
+        #loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--hub-obsidian);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            opacity: 1;
+            transition: opacity 0.8s ease;
+        }
+        
+        #loader.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+        
+        .loader-logo {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--hub-electric) 0%, var(--hub-aurora) 50%, var(--hub-pulse) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 2rem;
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        .loader-bar {
+            width: 200px;
+            height: 3px;
+            background: rgba(30, 111, 255, 0.1);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+        
+        .loader-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--hub-electric) 0%, var(--hub-aurora) 100%);
+            width: 0%;
+            animation: loadBar 1.5s ease-in-out forwards;
+            border-radius: 2px;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.6; }
+        }
+        
+        @keyframes loadBar {
+            0% { width: 0%; }
+            100% { width: 100%; }
+        }
+        
+        /* ===== NAVBAR ===== */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: transparent;
+            border-bottom: 0.5px solid transparent;
+            transition: all var(--transition-smooth);
+            padding: 1rem 2rem;
+        }
+        
+        nav.scrolled {
+            background: rgba(10, 12, 16, 0.9);
+            backdrop-filter: blur(16px);
+            border-bottom-color: rgba(30, 111, 255, 0.2);
+        }
+        
+        .navbar-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+        }
+        
+        .navbar-logo {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--hub-electric);
+            white-space: nowrap;
+            letter-spacing: -0.5px;
+        }
+        
+        .navbar-menu {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+            flex: 1;
+        }
+        
+        .navbar-menu a {
+            font-size: 0.95rem;
+            color: var(--hub-mist);
+            transition: color var(--transition-fast);
+        }
+        
+        .navbar-menu a:hover {
+            color: var(--hub-electric);
+        }
+        
+        .navbar-cta {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+        
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+        }
+        
+        .menu-toggle span {
+            width: 24px;
+            height: 2px;
+            background: var(--hub-white);
+            border-radius: 2px;
+            transition: all var(--transition-fast);
+        }
+        
+        @media (max-width: 768px) {
+            .menu-toggle { display: flex; }
+            
+            .navbar-menu {
+                position: fixed;
+                top: 60px;
+                left: 0;
+                right: 0;
+                flex-direction: column;
+                gap: 1rem;
+                background: rgba(10, 12, 16, 0.95);
+                backdrop-filter: blur(16px);
+                padding: 2rem;
+                border-bottom: 0.5px solid rgba(30, 111, 255, 0.2);
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height var(--transition-smooth);
+            }
+            
+            .navbar-menu.active {
+                max-height: 500px;
+            }
+            
+            .menu-toggle.active span:nth-child(1) {
+                transform: rotate(45deg) translate(8px, 8px);
+            }
+            
+            .menu-toggle.active span:nth-child(2) {
+                opacity: 0;
+            }
+            
+            .menu-toggle.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(7px, -7px);
+            }
+            
+            .navbar-cta {
+                flex-direction: column;
+                gap: 0.5rem;
+                width: 100%;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+        }
+        
+        /* ===== HERO SECTION ===== */
+        #hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-top: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            background: radial-gradient(circle at 30% 50%, rgba(30, 111, 255, 0.12) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 70%, rgba(123, 97, 255, 0.08) 0%, transparent 60%);
+        }
+        
+        #particleCanvas {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .hero-title {
+            margin-bottom: 1.5rem;
+            position: relative;
+            min-height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .hero-title h1 {
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            letter-spacing: -1px;
+        }
+        
+        .typing-cursor {
+            display: inline-block;
+            width: 2px;
+            height: 1em;
+            background: var(--hub-electric);
+            margin-left: 4px;
+            animation: blink 1s step-end infinite;
+        }
+        
+        @keyframes blink {
+            0%, 49% { opacity: 1; }
+            50%, 100% { opacity: 0; }
+        }
+        
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: var(--hub-mist);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+        
+        .hero-ctas {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-bottom: 4rem;
+            flex-wrap: wrap;
+        }
+        
+        .hero-metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+            padding: 2rem;
+            background: rgba(17, 21, 32, 0.5);
+            border: 0.5px solid rgba(136, 146, 164, 0.15);
+            border-radius: 12px;
+            backdrop-filter: blur(12px);
+        }
+        
+        .metric {
+            text-align: center;
+        }
+        
+        .metric-value {
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--hub-electric);
+            margin-bottom: 0.5rem;
+        }
+        
+        .metric-label {
+            font-size: 0.875rem;
+            color: var(--hub-slate);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        @media (max-width: 768px) {
+            #hero {
+                min-height: calc(100vh - 60px);
+                padding-top: 60px;
+            }
+            
+            .hero-ctas {
+                flex-direction: column;
+            }
+            
+            .hero-metrics {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+                padding: 1.5rem;
+            }
+        }
+        
+        /* ===== SERVICES SECTION ===== */
+        .services-tabs {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .tab-btn {
+            padding: 0.75rem 1.5rem;
+            background: transparent;
+            border: 1px solid rgba(136, 146, 164, 0.2);
+            color: var(--hub-mist);
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+        
+        .tab-btn:hover {
+            border-color: var(--hub-electric);
+            color: var(--hub-electric);
+        }
+        
+        .tab-btn.active {
+            background: linear-gradient(135deg, var(--hub-electric) 0%, var(--hub-aurora) 100%);
+            border-color: transparent;
+            color: var(--hub-white);
+        }
+        
+        .service-card {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .service-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .service-name {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: var(--hub-white);
+        }
+        
+        .service-description {
+            color: var(--hub-slate);
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+        
+        .service-price {
+            font-family: var(--font-mono);
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--hub-pulse);
+            margin-bottom: 1rem;
+        }
+        
+        .service-actions {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .btn-add-cart {
+            flex: 1;
+            padding: 0.75rem 1rem;
+            font-size: 0.9rem;
+        }
+        
+        .btn-wishlist {
+            width: 40px;
+            height: 40px;
+            padding: 0;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(30, 111, 255, 0.1);
+            border: 1px solid rgba(30, 111, 255, 0.3);
+            color: var(--hub-electric);
+            cursor: pointer;
+            transition: all var(--transition-fast);
+        }
+        
+        .btn-wishlist:hover {
+            background: rgba(0, 212, 160, 0.1);
+            border-color: rgba(0, 212, 160, 0.3);
+            color: var(--hub-pulse);
+        }
+        
+        .btn-wishlist.active {
+            background: rgba(0, 212, 160, 0.2);
+            border-color: var(--hub-pulse);
+            color: var(--hub-pulse);
+        }
+        
+        /* ===== TESTIMONIALS SECTION ===== */
+        .testimonials-slider {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .testimonial-card {
+            opacity: 0;
+            transform: translateX(100px);
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            transition: all var(--transition-smooth);
+        }
+        
+        .testimonial-card.active {
+            opacity: 1;
+            transform: translateX(0);
+            position: relative;
+            pointer-events: auto;
+        }
+        
+        .testimonial-card.prev {
+            transform: translateX(-100px);
+        }
+        
+        .testimonial-content {
+            background: var(--hub-midnight);
+            border: 0.5px solid rgba(136, 146, 164, 0.15);
+            border-top: 2px solid var(--hub-pulse);
+            border-radius: 12px;
+            padding: 3rem;
+            backdrop-filter: blur(12px);
+        }
+        
+        .testimonial-text {
+            font-size: 1.1rem;
+            color: var(--hub-mist);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+            font-style: italic;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--hub-electric), var(--hub-aurora));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--hub-white);
+            font-weight: 700;
+            font-size: 1.25rem;
+        }
+        
+        .author-info h4 {
+            margin: 0;
+            font-size: 1rem;
+        }
+        
+        .author-role {
+            font-size: 0.875rem;
+            color: var(--hub-slate);
+        }
+        
+        .testimonials-controls {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .testimonial-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(30, 111, 255, 0.2);
+            border: 1px solid rgba(30, 111, 255, 0.3);
+            cursor: pointer;
+            transition: all var(--transition-fast);
+        }
+        
+        .testimonial-dot.active {
+            background: var(--hub-electric);
+            box-shadow: 0 0 20px rgba(30, 111, 255, 0.5);
+        }
+        
+        /* ===== PROCESS SECTION ===== */
+        .process-timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+        
+        .process-timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, var(--hub-electric) 0%, var(--hub-aurora) 50%, var(--hub-pulse) 100%);
+            transform: translateX(-50%);
+            opacity: 0.3;
+        }
+        
+        .process-step {
+            position: relative;
+            margin-bottom: 4rem;
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+        }
+        
+        .process-step:nth-child(odd) {
+            flex-direction: row-reverse;
+        }
+        
+        .process-step-content {
+            flex: 1;
+        }
+        
+        .process-step-number {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--hub-electric) 0%, var(--hub-aurora) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--hub-white);
+            transform: translateX(-50%);
+            z-index: 2;
+            box-shadow: 0 0 30px rgba(30, 111, 255, 0.3);
+        }
+        
+        .process-step-title {
+            font-size: 1.5rem;
+            margin-bottom: 0.75rem;
+            color: var(--hub-white);
+        }
+        
+        .process-step-description {
+            color: var(--hub-slate);
+            line-height: 1.8;
+        }
+        
+        @media (max-width: 768px) {
+            .process-timeline::before {
+                left: 15px;
+            }
+            
+            .process-step {
+                flex-direction: column !important;
+                gap: 2rem;
+                margin-left: 60px;
+            }
+            
+            .process-step-number {
+                left: 0;
+                transform: translateX(-30px);
+            }
+        }
+        
+        /* ===== PRICING SECTION ===== */
+        .pricing-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+        
+        .toggle-switch {
+            position: relative;
+            width: 60px;
+            height: 32px;
+            background: rgba(30, 111, 255, 0.2);
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+        }
+        
+        .toggle-switch.active {
+            background: linear-gradient(90deg, var(--hub-electric), var(--hub-aurora));
+        }
+        
+        .toggle-switch::after {
+            content: '';
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: 28px;
+            height: 28px;
+            background: white;
+            border-radius: 50%;
+            transition: left var(--transition-fast);
+        }
+        
+        .toggle-switch.active::after {
+            left: 30px;
+        }
+        
+        .pricing-plans {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .plan-card {
+            position: relative;
+        }
+        
+        .plan-card.featured {
+            transform: scale(1.05);
+        }
+        
+        .plan-card.featured .card {
+            border-top-color: var(--hub-aurora);
+            box-shadow: 0 0 60px rgba(123, 97, 255, 0.15);
+        }
+        
+        .plan-badge {
+            position: absolute;
+            top: -12px;
+            right: 20px;
+            background: linear-gradient(135deg, var(--hub-aurora), var(--hub-electric));
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        
+        .plan-name {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .plan-description {
+            color: var(--hub-slate);
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+        }
+        
+        .plan-price {
+            font-family: var(--font-mono);
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: var(--hub-pulse);
+            margin-bottom: 0.5rem;
+        }
+        
+        .plan-period {
+            color: var(--hub-slate);
+            margin-bottom: 2rem;
+            font-size: 0.9rem;
+        }
+        
+        .plan-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+        
+        .plan-features li {
+            padding: 0.75rem 0;
+            color: var(--hub-mist);
+            border-bottom: 0.5px solid rgba(136, 146, 164, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        .plan-features li::before {
+            content: '✓';
+            color: var(--hub-pulse);
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+        
+        /* ===== ROI CALCULATOR ===== */
+        .calculator-wizard {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .wizard-progress {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            justify-content: space-between;
+        }
+        
+        .progress-step {
+            flex: 1;
+            height: 4px;
+            background: rgba(30, 111, 255, 0.1);
+            border-radius: 2px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .progress-step.active {
+            background: linear-gradient(90deg, var(--hub-electric), var(--hub-aurora));
+        }
+        
+        .progress-step.completed::after {
+            content: '✓';
+            position: absolute;
+            right: 0;
+            top: -8px;
+            color: var(--hub-pulse);
+            font-weight: 700;
+        }
+        
+        .wizard-content {
+            background: var(--hub-midnight);
+            border: 0.5px solid rgba(136, 146, 164, 0.15);
+            border-top: 2px solid var(--hub-electric);
+            border-radius: 12px;
+            padding: 2.5rem;
+            backdrop-filter: blur(12px);
+        }
+        
+        .wizard-step {
+            display: none;
+            animation: fadeIn 0.4s ease;
+        }
+        
+        .wizard-step.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--hub-white);
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            background: rgba(30, 111, 255, 0.05);
+            border: 1px solid rgba(30, 111, 255, 0.2);
+            border-radius: 8px;
+            color: var(--hub-white);
+            font-family: var(--font-body);
+            transition: all var(--transition-fast);
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--hub-electric);
+            background: rgba(30, 111, 255, 0.1);
+            box-shadow: 0 0 20px rgba(30, 111, 255, 0.1);
+        }
+        
+        .checkbox-group {
+            display: grid;
+            gap: 1rem;
+        }
+        
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        .checkbox-item input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            accent-color: var(--hub-electric);
+        }
+        
+        .checkbox-item label {
+            cursor: pointer;
+            margin: 0;
+        }
+        
+        .wizard-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: space-between;
+            margin-top: 2rem;
+        }
+        
+        .calculator-results {
+            background: linear-gradient(135deg, rgba(30, 111, 255, 0.1), rgba(123, 97, 255, 0.1));
+            border: 1px solid rgba(123, 97, 255, 0.2);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .result-item {
+            margin-bottom: 1.5rem;
+        }
+        
+        .result-label {
+            font-size: 0.9rem;
+            color: var(--hub-slate);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.5rem;
+        }
+        
+        .result-value {
+            font-family: var(--font-mono);
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: var(--hub-pulse);
+        }
+        
+        /* ===== BLOG SECTION ===== */
+        .blog-filters {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .filter-btn {
+            padding: 0.75rem 1.5rem;
+            background: transparent;
+            border: 1px solid rgba(136, 146, 164, 0.2);
+            color: var(--hub-mist);
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+        
+        .filter-btn:hover,
+        .filter-btn.active {
+            border-color: var(--hub-electric);
+            color: var(--hub-electric);
+            background: rgba(30, 111, 255, 0.1);
+        }
+        
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+        
+        .blog-card {
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .blog-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, var(--hub-electric) 0%, var(--hub-aurora) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            border-radius: 8px;
+        }
+        
+        .blog-date {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--hub-slate);
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+        
+        .blog-title {
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+            color: var(--hub-white);
+            line-height: 1.4;
+        }
+        
+        .blog-excerpt {
+            color: var(--hub-mist);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+        
+        .blog-meta {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 1.5rem;
+            border-top: 0.5px solid rgba(136, 146, 164, 0.1);
+        }
+        
+        .blog-category {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--hub-electric);
+            text-transform: uppercase;
+        }
+        
+        .blog-read-time {
+            font-size: 0.85rem;
+            color: var(--hub-slate);
+        }
+        
+        /* ===== FAQ SECTION ===== */
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            background: var(--hub-midnight);
+            border: 0.5px solid rgba(136, 146, 164, 0.15);
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            transition: all var(--transition-smooth);
+        }
+        
+        .faq-item.active {
+            border-color: rgba(30, 111, 255, 0.3);
+            background: rgba(30, 111, 255, 0.05);
+        }
+        
+        .faq-question {
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            transition: all var(--transition-fast);
+        }
+        
+        .faq-question:hover {
+            background: rgba(30, 111, 255, 0.08);
+        }
+        
+        .faq-question-text {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--hub-white);
+            flex: 1;
+        }
+        
+        .faq-toggle {
+            width: 24px;
+            height: 24px;
+            background: linear-gradient(135deg, var(--hub-electric), var(--hub-aurora));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--hub-white);
+            font-weight: 700;
+            font-size: 1rem;
+            flex-shrink: 0;
+            transition: transform var(--transition-smooth);
+        }
+        
+        .faq-item.active .faq-toggle {
+            transform: rotate(180deg);
+        }
+        
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height var(--transition-smooth);
+            background: rgba(30, 111, 255, 0.05);
+        }
+        
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+        }
+        
+        .faq-answer-content {
+            padding: 0 1.5rem 1.5rem;
+            color: var(--hub-mist);
+            line-height: 1.8;
+        }
+        
+        /* ===== FOOTER ===== */
+        footer {
+            background: var(--hub-navy);
+            border-top: 0.5px solid rgba(30, 111, 255, 0.1);
+            padding: 4rem 0 2rem;
+            position: relative;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+        
+        .footer-section h4 {
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section ul li {
+            margin-bottom: 0.75rem;
+        }
+        
+        .footer-section a {
+            color: var(--hub-mist);
+        }
+        
+        .footer-section a:hover {
+            color: var(--hub-electric);
+        }
+        
+        .footer-logo {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--hub-electric), var(--hub-aurora));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-tagline {
+            color: var(--hub-slate);
+            margin-bottom: 1.5rem;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background: rgba(30, 111, 255, 0.1);
+            border: 1px solid rgba(30, 111, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--hub-electric);
+            transition: all var(--transition-fast);
+        }
+        
+        .social-link:hover {
+            background: linear-gradient(135deg, var(--hub-electric), var(--hub-aurora));
+            border-color: transparent;
+            color: var(--hub-white);
+        }
+        
+        .newsletter-form {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .newsletter-form input {
+            flex: 1;
+            padding: 0.75rem 1rem;
+            background: rgba(30, 111, 255, 0.05);
+            border: 1px solid rgba(30, 111, 255, 0.2);
+            border-radius: 8px;
+            color: var(--hub-white);
+            font-family: var(--font-body);
+            transition: all var(--transition-fast);
+        }
+        
+        .newsletter-form input:focus {
+            outline: none;
+            border-color: var(--hub-electric);
+            background: rgba(30, 111, 255, 0.1);
+        }
+        
+        .newsletter-form button {
+            padding: 0.75rem 1.5rem;
+        }
+        
+        .footer-bottom {
+            padding-top: 2rem;
+            border-top: 0.5px solid rgba(30, 111, 255, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            font-size: 0.85rem;
+            color: var(--hub-slate);
+        }
+        
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        @media (max-width: 768px) {
+            footer {
+                padding: 2rem 0 1rem;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .footer-bottom {
+                flex-direction: column;
+                justify-content: center;
+                text-align: center;
+            }
+            
+            .footer-links {
+                justify-content: center;
+            }
+        }
+        
+        /* ===== TOASTS ===== */
+        .toast-container {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            max-width: 400px;
+        }
+        
+        .toast {
+            background: var(--hub-midnight);
+            border: 1px solid rgba(30, 111, 255, 0.3);
+            border-left: 3px solid var(--hub-electric);
+            border-radius: 8px;
+            padding: 1.25rem;
+            color: var(--hub-white);
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            animation: slideIn 0.3s ease;
+            backdrop-filter: blur(12px);
+        }
+        
+        .toast.success {
+            border-left-color: var(--hub-pulse);
+        }
+        
+        .toast.error {
+            border-left-color: var(--hub-amber);
+        }
+        
+        .toast-icon {
+            flex-shrink: 0;
+            font-size: 1.25rem;
+        }
+        
+        .toast-content {
+            flex: 1;
+        }
+        
+        .toast-close {
+            background: none;
+            border: none;
+            color: var(--hub-slate);
+            cursor: pointer;
+            font-size: 1.25rem;
+            padding: 0;
+            transition: color var(--transition-fast);
+        }
+        
+        .toast-close:hover {
+            color: var(--hub-white);
+        }
+        
+        @keyframes slideIn {
+            from {
+                transform: translateX(400px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        
+        /* ===== MODAL ===== */
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(10, 12, 16, 0.8);
+            backdrop-filter: blur(8px);
+            z-index: 999;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        .modal.active {
+            display: flex;
+        }
+        
+        .modal-content {
+            background: var(--hub-midnight);
+            border: 0.5px solid rgba(136, 146, 164, 0.15);
+            border-top: 2px solid var(--hub-electric);
+            border-radius: 12px;
+            padding: 2.5rem;
+            max-width: 600px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            animation: slideUp 0.3s ease;
+            backdrop-filter: blur(12px);
+        }
+        
+        @keyframes slideUp {
+            from {
+                transform: translateY(30px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 0.5px solid rgba(30, 111, 255, 0.1);
+        }
+        
+        .modal-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .modal-close {
+            background: none;
+            border: none;
+            color: var(--hub-mist);
+            cursor: pointer;
+            font-size: 1.5rem;
+            padding: 0;
+            transition: color var(--transition-fast);
+        }
+        
+        .modal-close:hover {
+            color: var(--hub-white);
+        }
+        
+        /* ===== CURSOR GLOW ===== */
+        .cursor-glow {
+            position: fixed;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(30, 111, 255, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 999;
+            display: none;
+            mix-blend-mode: screen;
+        }
+        
+        @media (min-width: 1025px) {
+            .cursor-glow {
+                display: block;
+            }
+        }
+        
+        /* ===== BACK TO TOP ===== */
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--hub-electric), var(--hub-aurora));
+            border: none;
+            border-radius: 50%;
+            color: var(--hub-white);
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 99;
+            transition: all var(--transition-smooth);
+            box-shadow: 0 0 30px rgba(30, 111, 255, 0.3);
+        }
+        
+        .back-to-top.show {
+            display: flex;
+        }
+        
+        .back-to-top:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 0 50px rgba(30, 111, 255, 0.5);
+        }
+        
+        /* ===== DASHBOARD ===== */
+        .dashboard-modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(10, 12, 16, 0.9);
+            backdrop-filter: blur(8px);
+            z-index: 998;
+            overflow-y: auto;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .dashboard-modal.active {
+            display: block;
+        }
+
+        .dashboard-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 1rem;
+            min-height: 100vh;
+        }
+
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid rgba(30, 111, 255, 0.2);
+        }
+
+        .dashboard-header h1 {
+            font-size: 2.5rem;
+        }
+
+        .dashboard-close {
+            background: none;
+            border: none;
+            color: var(--hub-white);
+            cursor: pointer;
+            font-size: 2rem;
+            padding: 0;
+        }
+
+        .dashboard-tabs {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .dashboard-tab {
+            padding: 0.75rem 1.5rem;
+            background: rgba(30, 111, 255, 0.1);
+            border: 1px solid rgba(30, 111, 255, 0.2);
+            border-radius: 8px;
+            color: var(--hub-mist);
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            font-family: var(--font-body);
+            font-weight: 500;
+        }
+
+        .dashboard-tab.active {
+            background: linear-gradient(135deg, var(--hub-electric), var(--hub-aurora));
+            border-color: transparent;
+            color: var(--hub-white);
+        }
+
+        .dashboard-tab:hover {
+            border-color: var(--hub-electric);
+            color: var(--hub-electric);
+        }
+
+        .dashboard-content {
+            display: none;
+        }
+
+        .dashboard-content.active {
+            display: block;
+        }
+
+        .dashboard-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .stat-card {
+            background: var(--hub-midnight);
+            border: 0.5px solid rgba(136, 146, 164, 0.15);
+            border-top: 2px solid var(--hub-electric);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .stat-icon {
+            font-size: 2rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .stat-value {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--hub-pulse);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--hub-slate);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .services-list {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .service-contract {
+            background: var(--hub-midnight);
+            border: 0.5px solid rgba(136, 146, 164, 0.15);
+            border-left: 3px solid var(--hub-electric);
+            border-radius: 12px;
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 2rem;
+            align-items: start;
+        }
+
+        .service-contract.inactive {
+            border-left-color: var(--hub-slate);
+            opacity: 0.7;
+        }
+
+        .service-contract.success {
+            border-left-color: var(--hub-pulse);
+        }
+
+        .service-contract-info h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1.5rem;
+        }
+
+        .service-contract-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .detail-item {
+            background: rgba(30, 111, 255, 0.05);
+            border: 1px solid rgba(30, 111, 255, 0.1);
+            border-radius: 8px;
+            padding: 1rem;
+        }
+
+        .detail-label {
+            font-size: 0.8rem;
+            color: var(--hub-slate);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.5rem;
+        }
+
+        .detail-value {
+            font-family: var(--font-mono);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--hub-white);
+        }
+
+        .service-contract-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .service-contract-status {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-family: var(--font-mono);
+            text-align: center;
+        }
+
+        .status-active {
+            background: rgba(0, 212, 160, 0.2);
+            color: var(--hub-pulse);
+            border: 1px solid rgba(0, 212, 160, 0.3);
+        }
+
+        .status-pending {
+            background: rgba(255, 140, 66, 0.2);
+            color: var(--hub-amber);
+            border: 1px solid rgba(255, 140, 66, 0.3);
+        }
+
+        .status-completed {
+            background: rgba(123, 97, 255, 0.2);
+            color: var(--hub-aurora);
+            border: 1px solid rgba(123, 97, 255, 0.3);
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: var(--hub-slate);
+        }
+
+        .empty-state h3 {
+            color: var(--hub-white);
+            margin-bottom: 1rem;
+        }
+
+        .empty-state p {
+            margin-bottom: 2rem;
+            color: var(--hub-mist);
+        }
+
+        .invoice-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        .invoice-table thead {
+            background: rgba(30, 111, 255, 0.1);
+        }
+
+        .invoice-table th {
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+            color: var(--hub-white);
+            border-bottom: 1px solid rgba(30, 111, 255, 0.2);
+        }
+
+        .invoice-table td {
+            padding: 1rem;
+            border-bottom: 1px solid rgba(30, 111, 255, 0.1);
+            color: var(--hub-mist);
+        }
+
+        .invoice-table tr:hover {
+            background: rgba(30, 111, 255, 0.05);
+        }
+
+        .invoice-link {
+            color: var(--hub-electric);
+            cursor: pointer;
+            transition: color var(--transition-fast);
+        }
+
+        .invoice-link:hover {
+            color: var(--hub-aurora);
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .dashboard-header {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
+
+            .service-contract {
+                grid-template-columns: 1fr;
+            }
+
+            .service-contract-details {
+                grid-template-columns: 1fr;
+            }
+
+            .invoice-table {
+                font-size: 0.85rem;
+            }
+
+            .invoice-table th,
+            .invoice-table td {
+                padding: 0.75rem;
+            }
+        }
+        
+        /* ===== CART ICON ANIMATION ===== */
+        .cart-sidebar {
+            position: fixed;
+            right: 0;
+            top: 0;
+            width: 400px;
+            height: 100vh;
+            background: var(--hub-midnight);
+            border-left: 1px solid rgba(30, 111, 255, 0.2);
+            transform: translateX(100%);
+            transition: transform var(--transition-smooth);
+            z-index: 98;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+        }
+        
+        .cart-sidebar.open {
+            transform: translateX(0);
+        }
+        
+        .cart-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid rgba(30, 111, 255, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .cart-header h3 {
+            margin: 0;
+        }
+        
+        .cart-close {
+            background: none;
+            border: none;
+            color: var(--hub-white);
+            cursor: pointer;
+            font-size: 1.5rem;
+            padding: 0;
+        }
+        
+        .cart-items {
+            flex: 1;
+            overflow-y: auto;
+            padding: 1.5rem;
+        }
+        
+        .cart-item {
+            background: rgba(30, 111, 255, 0.05);
+            border: 1px solid rgba(30, 111, 255, 0.1);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            gap: 1rem;
+        }
+        
+        .cart-item-info h4 {
+            margin: 0 0 0.25rem 0;
+            font-size: 1rem;
+        }
+        
+        .cart-item-price {
+            font-family: var(--font-mono);
+            color: var(--hub-pulse);
+            font-weight: 600;
+        }
+        
+        .cart-item-remove {
+            background: none;
+            border: none;
+            color: var(--hub-slate);
+            cursor: pointer;
+            transition: color var(--transition-fast);
+        }
+        
+        .cart-item-remove:hover {
+            color: var(--hub-amber);
+        }
+        
+        .cart-empty {
+            text-align: center;
+            padding: 3rem 1rem;
+            color: var(--hub-slate);
+        }
+        
+        .cart-footer {
+            padding: 1.5rem;
+            border-top: 1px solid rgba(30, 111, 255, 0.1);
+        }
+        
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            font-family: var(--font-mono);
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+        
+        .cart-total-price {
+            color: var(--hub-pulse);
+        }
+        
+        .cart-footer .btn {
+            width: 100%;
+            margin-top: 1rem;
+        }
+        
+        @media (max-width: 768px) {
+            .cart-sidebar {
+                width: 100%;
+            }
+        }
+        
+        /* ===== RESPONSIVE ADJUSTMENTS ===== */
+        @media (max-width: 768px) {
+            section {
+                padding: 3rem 0;
+            }
+            
+            .container {
+                padding: 0 1rem;
+            }
+            
+            .section-subtitle {
+                font-size: 1rem;
+            }
+            
+            .toast-container {
+                bottom: 1rem;
+                right: 1rem;
+                left: 1rem;
+                max-width: none;
+            }
+            
+            nav {
+                padding: 0.75rem 1rem;
+            }
+            
+            .navbar-container {
+                padding: 0;
+            }
+            
+            .navbar-logo {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ===== LOADER ===== -->
+    <div id="loader">
+        <div class="loader-logo">MAI·HUB</div>
+        <div class="loader-bar">
+            <div class="loader-bar-fill"></div>
+        </div>
+    </div>
+    
+    <!-- ===== CURSOR GLOW ===== -->
+    <div class="cursor-glow"></div>
+    
+    <!-- ===== NAVBAR ===== -->
+    <nav>
+        <div class="navbar-container">
+            <div class="navbar-logo">MAI·HUB</div>
+            <ul class="navbar-menu">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#soluciones">Soluciones IA</a></li>
+                <li><a href="#testimonios">Casos de Éxito</a></li>
+                <li><a href="#nosotros">Nosotros</a></li>
+                <li><a href="#blog">Blog</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+            <div class="navbar-cta">
+                <button class="btn" style="background: transparent; border: 1px solid rgba(136, 146, 164, 0.3); color: var(--hub-mist); padding: 0.75rem 1rem; border-radius: 8px; position: relative;" onclick="toggleCart()" title="Mi Carrito">
+                    🛒 <span id="cartBadge" style="position: absolute; top: -8px; right: -8px; background: var(--hub-pulse); color: var(--hub-obsidian); width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 700; display: none;">0</span>
+                </button>
+                <button class="btn" style="background: transparent; border: 1px solid rgba(136, 146, 164, 0.3); color: var(--hub-mist); padding: 0.75rem 1rem; border-radius: 8px;" onclick="openDashboard()">👤 Mi Cuenta</button>
+                <button class="btn btn-primary" onclick="openContactModal()">Agenda Consultoría</button>
+                <button class="menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- ===== HERO SECTION ===== -->
+    <section id="hero" class="section-dark">
+        <div class="hero-bg"></div>
+        <canvas id="particleCanvas"></canvas>
+        <div class="container hero-content">
+            <div class="hero-title">
+                <h1><span id="typingText"></span><span class="typing-cursor"></span></h1>
+            </div>
+            <p class="hero-subtitle">Conectamos marketing, ventas y atención al cliente en un ecosistema inteligente que trabaja 24/7 por tu negocio.</p>
+            <div class="hero-ctas">
+                <button class="btn btn-primary" onclick="openContactModal()">Agenda consultoría gratuita</button>
+                <button class="btn btn-secondary" onclick="document.getElementById('servicios').scrollIntoView({behavior: 'smooth'})">Ver servicios</button>
+            </div>
+            <div class="hero-metrics">
+                <div class="metric">
+                    <div class="metric-value" data-count="500">0</div>
+                    <div class="metric-label">Proyectos Entregados</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value" data-count="3">0</div>
+                    <div class="metric-label">ROI Promedio</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value">24/7</div>
+                    <div class="metric-label">Sistemas Activos</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value" data-count="98">0</div>
+                    <div class="metric-label">% Satisfacción</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- ===== SERVICES SECTION ===== -->
+    <section id="servicios" class="section-midnight">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nuestros Servicios</h2>
+                <p class="section-subtitle">Soluciones de automatización e IA diseñadas para hacer crecer tu negocio</p>
+            </div>
+            
+            <div class="services-tabs">
+                <button class="tab-btn active" onclick="filterServices('ia')">🤖 Automatización e IA</button>
+                <button class="tab-btn" onclick="filterServices('marketing')">📣 Marketing Digital</button>
+                <button class="tab-btn" onclick="filterServices('design')">🎨 Diseño y Conversión</button>
+                <button class="tab-btn" onclick="filterServices('strategy')">📊 Estrategia y Crecimiento</button>
+            </div>
+            
+            <div class="grid grid-3" id="servicesGrid"></div>
+        </div>
+    </section>
+    
+    <!-- ===== TESTIMONIALS SECTION ===== -->
+    <section id="testimonios" class="section-dark">
+        <div class="container">
+            <div class="section-title">
+                <h2>Casos de Éxito</h2>
+                <p class="section-subtitle">Empresas que están escalando con MAIH</p>
+            </div>
+            
+            <div class="testimonials-slider">
+                <div class="testimonial-card active">
+                    <div class="testimonial-content">
+                        <p class="testimonial-text">"Implementamos los chatbots de MAIH hace 6 meses. Nuestras conversiones en WhatsApp aumentaron 3.5x y ahora atendemos 400% más clientes sin aumentar staff. El equipo es increíble."</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">RS</div>
+                            <div class="author-info">
+                                <h4>Roberto Silva</h4>
+                                <p class="author-role">Director, Boutique Hotel Lima</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p class="testimonial-text">"MAIH no es solo un proveedor de software. Son socios estratégicos. El ROI de nuestras campañas de Meta Ads mejoró 2.8x con su optimización con IA. Altamente recomendado."</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">CP</div>
+                            <div class="author-info">
+                                <h4>Carla Peralta</h4>
+                                <p class="author-role">Gerenta, E-commerce Fashion</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p class="testimonial-text">"El CRM inteligente automatizó nuestra gestión de leads. Ahora nuestro equipo de ventas solo toca leads calificados. Cerramos 45% más deals en el mismo tiempo."</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">JM</div>
+                            <div class="author-info">
+                                <h4>Juan Mendoza</h4>
+                                <p class="author-role">CEO, Digital Agency</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p class="testimonial-text">"Nuestro restaurante pasó de 50 a 200 reservas mensuales via WhatsApp. El bot maneja todo: confirmaciones, horarios, cambios. MAIH literalmente duplicó nuestro negocio."</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">LV</div>
+                            <div class="author-info">
+                                <h4>Laura Vásquez</h4>
+                                <p class="author-role">Propietaria, Restaurante Premium</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="testimonials-controls">
+                <button class="testimonial-dot active" onclick="showTestimonial(0)"></button>
+                <button class="testimonial-dot" onclick="showTestimonial(1)"></button>
+                <button class="testimonial-dot" onclick="showTestimonial(2)"></button>
+                <button class="testimonial-dot" onclick="showTestimonial(3)"></button>
+            </div>
+        </div>
+    </section>
+    
+    <!-- ===== PROCESS SECTION ===== -->
+    <section id="proceso" class="section-midnight">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nuestro Proceso</h2>
+                <p class="section-subtitle">De diagnóstico a automatización: 4 pasos simples</p>
+            </div>
+            
+            <div class="process-timeline">
+                <div class="process-step">
+                    <div class="process-step-number">1</div>
+                    <div class="process-step-content">
+                        <h3 class="process-step-title">Diagnóstico Inteligente</h3>
+                        <p class="process-step-description">Analizamos tu negocio, identificamos oportunidades de automatización y calculamos el ROI potencial. Sin costo, sin compromiso.</p>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <div class="process-step-number">2</div>
+                    <div class="process-step-content">
+                        <h3 class="process-step-title">Diseño de Estrategia</h3>
+                        <p class="process-step-description">Creamos un plan personalizado con los servicios ideales para tu caso. Te mostramos exactamente qué se automatizará y cómo.</p>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <div class="process-step-number">3</div>
+                    <div class="process-step-content">
+                        <h3 class="process-step-title">Implementación Rápida</h3>
+                        <p class="process-step-description">Nuestro equipo instala, configura e integra. La mayoría de proyectos están listos en 2-4 semanas. Sin disrupciones en tu operación.</p>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <div class="process-step-number">4</div>
+                    <div class="process-step-content">
+                        <h3 class="process-step-title">Soporte & Optimización</h3>
+                        <p class="process-step-description">Monitoreo 24/7, ajustes continuos y reportes de resultados. Garantizamos que los sistemas sigan entregando valor.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- ===== PRICING SECTION ===== -->
+    <section id="pricing" class="section-dark">
+        <div class="container">
+            <div class="section-title">
+                <h2>Planes y Precios</h2>
+                <p class="section-subtitle">Flexibilidad para crecer a tu ritmo</p>
+            </div>
+            
+            <div style="text-align: center; margin-bottom: 3rem;">
+                <div class="pricing-toggle">
+                    <span>Mensual</span>
+                    <div class="toggle-switch" onclick="togglePricingCycle(this)"></div>
+                    <span>Anual (Ahorra 15%)</span>
+                </div>
+            </div>
+            
+            <div class="pricing-plans" id="pricingPlans"></div>
+        </div>
+    </section>
+    
+    <!-- ===== ROI CALCULATOR ===== -->
+    <section id="calculadora" class="section-midnight">
+        <div class="container">
+            <div class="section-title">
+                <h2>Calculadora de ROI</h2>
+                <p class="section-subtitle">Descubre cuánto podrías ganar automatizando tu negocio</p>
+            </div>
+            
+            <div class="calculator-wizard">
+                <div class="wizard-progress" id="wizardProgress">
+                    <div class="progress-step active" onclick="goToStep(1)"></div>
+                    <div class="progress-step" onclick="goToStep(2)"></div>
+                    <div class="progress-step" onclick="goToStep(3)"></div>
+                </div>
+                
+                <div class="wizard-content">
+                    <!-- Step 1 -->
+                    <div class="wizard-step active" id="step1">
+                        <h3>Cuéntanos sobre tu negocio</h3>
+                        <div class="form-group">
+                            <label>¿Cuál es tu industria?</label>
+                            <select id="industry" onchange="updateCalculator()">
+                                <option value="">Selecciona una opción</option>
+                                <option value="restaurant">Restaurante</option>
+                                <option value="hotel">Hotel</option>
+                                <option value="travel">Agencia de Viajes</option>
+                                <option value="retail">Retail</option>
+                                <option value="health">Salud</option>
+                                <option value="fitness">Fitness</option>
+                                <option value="other">Otro</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Número de empleados</label>
+                            <select id="employees" onchange="updateCalculator()">
+                                <option value="">Selecciona una opción</option>
+                                <option value="small">Menos de 5</option>
+                                <option value="medium">5 - 15</option>
+                                <option value="large">15 - 50</option>
+                                <option value="xlarge">Más de 50</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Ventas mensuales estimadas</label>
+                            <select id="revenue" onchange="updateCalculator()">
+                                <option value="">Selecciona una opción</option>
+                                <option value="very-small">Menos de S/. 10k</option>
+                                <option value="small">S/. 10k - 50k</option>
+                                <option value="medium">S/. 50k - 150k</option>
+                                <option value="large">S/. 150k+</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Principal dolor de cabeza</label>
+                            <select id="pain" onchange="updateCalculator()">
+                                <option value="">Selecciona una opción</option>
+                                <option value="leads">Más leads/clientes</option>
+                                <option value="support">Atención 24/7</option>
+                                <option value="retention">Fidelización</option>
+                                <option value="process">Automatizar procesos</option>
+                                <option value="all">Todo lo anterior</option>
+                            </select>
+                        </div>
+                        
+                        <div class="wizard-buttons">
+                            <div></div>
+                            <button class="btn btn-primary" onclick="nextStep()">Siguiente</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 2 -->
+                    <div class="wizard-step" id="step2">
+                        <h3>¿Cuáles son tus objetivos?</h3>
+                        <div class="form-group">
+                            <div class="checkbox-group">
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="obj1" value="sales" onchange="updateCalculator()">
+                                    <label for="obj1">Aumentar ventas</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="obj2" value="costs" onchange="updateCalculator()">
+                                    <label for="obj2">Reducir costos operativos</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="obj3" value="support" onchange="updateCalculator()">
+                                    <label for="obj3">Mejorar atención al cliente</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="obj4" value="scale" onchange="updateCalculator()">
+                                    <label for="obj4">Escalar sin contratar</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="obj5" value="metrics" onchange="updateCalculator()">
+                                    <label for="obj5">Medir resultados mejor</label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="wizard-buttons">
+                            <button class="btn btn-secondary" onclick="prevStep()">Anterior</button>
+                            <button class="btn btn-primary" onclick="nextStep()">Ver Resultados</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 3 - Results -->
+                    <div class="wizard-step" id="step3">
+                        <h3>Tu Plan Recomendado</h3>
+                        <div class="calculator-results" id="calculatorResults">
+                            <div class="result-item">
+                                <div class="result-label">Plan Recomendado</div>
+                                <div class="result-value" id="planName">Crecimiento</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-label">Servicios Específicos</div>
+                                <div class="result-value" id="servicesRecommended" style="font-size: 1rem; color: var(--hub-mist);">Chatbots + CRM</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-label">Inversión Estimada</div>
+                                <div class="result-value" id="estimatedInvestment">S/. 2,500/mes</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-label">ROI Proyectado (6 meses)</div>
+                                <div class="result-value" id="projectedRoi">S/. 15,000</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-label">Retorno Estimado</div>
+                                <div class="result-value" id="roiPercentage">600%</div>
+                            </div>
+                        </div>
+                        
+                        <div class="wizard-buttons" style="margin-top: 2rem;">
+                            <button class="btn btn-secondary" onclick="prevStep()">Atrás</button>
+                            <button class="btn btn-primary" onclick="openContactModal()">Quiero este plan</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- ===== BLOG SECTION ===== -->
+    <section id="blog" class="section-dark">
+        <div class="container">
+            <div class="section-title">
+                <h2>Blog & Recursos</h2>
+                <p class="section-subtitle">Guías, casos de éxito y tendencias en automatización con IA</p>
+            </div>
+            
+            <div class="blog-filters">
+                <button class="filter-btn active" onclick="filterBlog('todos')">Todos</button>
+                <button class="filter-btn" onclick="filterBlog('automatización')">Automatización</button>
+                <button class="filter-btn" onclick="filterBlog('marketing')">Marketing</button>
+                <button class="filter-btn" onclick="filterBlog('casos')">Casos de Éxito</button>
+                <button class="filter-btn" onclick="filterBlog('tutoriales')">Tutoriales</button>
+            </div>
+            
+            <div class="blog-grid" id="blogGrid"></div>
+        </div>
+    </section>
+    
+    <!-- ===== FAQ SECTION ===== -->
+    <section id="faq" class="section-midnight">
+        <div class="container">
+            <div class="section-title">
+                <h2>Preguntas Frecuentes</h2>
+                <p class="section-subtitle">Resuelve tus dudas sobre nuestros servicios</p>
+            </div>
+            
+            <div class="faq-container" id="faqContainer"></div>
+        </div>
+    </section>
+    
+    <!-- ===== CONTACT CTA SECTION ===== -->
+    <section class="section-dark">
+        <div class="container" style="text-align: center; padding: 5rem 2rem;">
+            <h2 style="margin-bottom: 1rem;">¿Listo para escalar tu negocio?</h2>
+            <p class="section-subtitle" style="margin-bottom: 2rem;">Agenda una consultoría gratuita con nuestro equipo. Sin costo. Sin compromiso. Puro valor.</p>
+            <button class="btn btn-primary" onclick="openContactModal()" style="font-size: 1.1rem; padding: 1.25rem 3rem;">Agendar Ahora</button>
+        </div>
+    </section>
+    
+    <!-- ===== FOOTER ===== -->
+    <footer id="contacto">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">MAI·HUB</div>
+                    <p class="footer-tagline">El sistema nervioso inteligente de tu negocio</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link" title="LinkedIn">in</a>
+                        <a href="#" class="social-link" title="Instagram">📷</a>
+                        <a href="#" class="social-link" title="Facebook">f</a>
+                        <a href="#" class="social-link" title="Twitter">𝕏</a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Servicios</h4>
+                    <ul>
+                        <li><a href="#servicios">Automatización e IA</a></li>
+                        <li><a href="#servicios">Marketing Digital</a></li>
+                        <li><a href="#servicios">Diseño Web</a></li>
+                        <li><a href="#servicios">Consultoría Estratégica</a></li>
+                        <li><a href="#calculadora">Calculadora ROI</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Empresa</h4>
+                    <ul>
+                        <li><a href="#proceso">Nuestro Proceso</a></li>
+                        <li><a href="#testimonios">Casos de Éxito</a></li>
+                        <li><a href="#blog">Blog</a></li>
+                        <li><a href="#">Trabaja con Nosotros</a></li>
+                        <li><a href="#">Sobre MAIH</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contacto</h4>
+                    <ul>
+                        <li><a href="https://wa.me/5551234567" target="_blank">WhatsApp</a></li>
+                        <li><a href="mailto:hola@maih.pe">Email</a></li>
+                        <li><a href="#">Lima, Perú</a></li>
+                    </ul>
+                    <div style="margin-top: 1.5rem;">
+                        <p style="color: var(--hub-slate); margin-bottom: 1rem;">Recibe actualizaciones y casos de éxito</p>
+                        <div class="newsletter-form">
+                            <input type="email" placeholder="tu@email.com" id="newsletterEmail">
+                            <button class="btn btn-primary" onclick="subscribeNewsletter()">Suscribir</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div>&copy; 2025 MARKETING AI HUB · Todos los derechos reservados</div>
+                <div class="footer-links">
+                    <a href="#">Política de Privacidad</a>
+                    <a href="#">Términos de Servicio</a>
+                    <a href="#">Cookies</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- ===== DASHBOARD MODAL ===== -->
+    <div class="dashboard-modal" id="dashboardModal">
+        <div class="dashboard-container">
+            <div class="dashboard-header">
+                <div>
+                    <h1>Mi Cuenta</h1>
+                    <p style="color: var(--hub-slate); margin-top: 0.5rem;">Gestiona tus servicios y suscripciones</p>
+                </div>
+                <button class="dashboard-close" onclick="closeDashboard()">×</button>
+            </div>
+
+            <div class="dashboard-tabs">
+                <button class="dashboard-tab active" onclick="switchDashboardTab('servicios')">📦 Mis Servicios</button>
+                <button class="dashboard-tab" onclick="switchDashboardTab('historial')">📋 Historial de Compras</button>
+                <button class="dashboard-tab" onclick="switchDashboardTab('facturas')">🧾 Facturas</button>
+                <button class="dashboard-tab" onclick="switchDashboardTab('perfil')">⚙️ Perfil</button>
+            </div>
+
+            <!-- MIS SERVICIOS TAB -->
+            <div class="dashboard-content active" id="servicios-tab">
+                <div class="dashboard-stats">
+                    <div class="stat-card">
+                        <div class="stat-icon">📦</div>
+                        <div class="stat-value" id="activServicesCount">0</div>
+                        <div class="stat-label">Servicios Activos</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">💰</div>
+                        <div class="stat-value" id="monthlySpendValue">S/. 0</div>
+                        <div class="stat-label">Gasto Mensual</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">📅</div>
+                        <div class="stat-value" id="nextBillingDate">—</div>
+                        <div class="stat-label">Próxima Facturación</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">⭐</div>
+                        <div class="stat-value" id="savePercentage">15%</div>
+                        <div class="stat-label">Ahorro Anual</div>
+                    </div>
+                </div>
+
+                <div class="services-list" id="activeServicesList"></div>
+            </div>
+
+            <!-- HISTORIAL DE COMPRAS TAB -->
+            <div class="dashboard-content" id="historial-tab">
+                <div style="margin-bottom: 2rem;">
+                    <h2 style="margin-bottom: 1rem;">Historial de Compras</h2>
+                    <p style="color: var(--hub-slate); margin-bottom: 1.5rem;">Todas tus compras y transacciones completadas</p>
+                </div>
+                <div id="purchaseHistory"></div>
+            </div>
+
+            <!-- FACTURAS TAB -->
+            <div class="dashboard-content" id="facturas-tab">
+                <div style="margin-bottom: 2rem;">
+                    <h2 style="margin-bottom: 1rem;">Facturas y Recibos</h2>
+                    <p style="color: var(--hub-slate); margin-bottom: 1.5rem;">Descarga tus facturas electrónicas</p>
+                </div>
+                <table class="invoice-table">
+                    <thead>
+                        <tr>
+                            <th>Fecha</th>
+                            <th>Descripción</th>
+                            <th>Monto</th>
+                            <th>Estado</th>
+                            <th>Acción</th>
+                        </tr>
+                    </thead>
+                    <tbody id="invoicesTable"></tbody>
+                </table>
+            </div>
+
+            <!-- PERFIL TAB -->
+            <div class="dashboard-content" id="perfil-tab">
+                <div style="max-width: 600px;">
+                    <h2 style="margin-bottom: 2rem;">Mi Perfil</h2>
+                    
+                    <div style="background: var(--hub-midnight); border: 0.5px solid rgba(136, 146, 164, 0.15); border-radius: 12px; padding: 2rem; margin-bottom: 2rem;">
+                        <div class="form-group">
+                            <label>Nombre Completo</label>
+                            <input type="text" id="profileName" placeholder="Tu nombre" value="">
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" id="profileEmail" placeholder="tu@email.com" value="">
+                        </div>
+                        <div class="form-group">
+                            <label>Empresa</label>
+                            <input type="text" id="profileCompany" placeholder="Nombre de tu empresa" value="">
+                        </div>
+                        <div class="form-group">
+                            <label>Teléfono</label>
+                            <input type="tel" id="profilePhone" placeholder="+51 9 ____  ____" value="">
+                        </div>
+                        <div class="form-group">
+                            <label>Industria</label>
+                            <select id="profileIndustry">
+                                <option value="">Selecciona una opción</option>
+                                <option value="restaurant">Restaurante</option>
+                                <option value="hotel">Hotel</option>
+                                <option value="retail">Retail</option>
+                                <option value="tech">Tecnología</option>
+                                <option value="other">Otro</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; gap: 1rem;">
+                        <button class="btn btn-primary" onclick="saveProfile()">Guardar Cambios</button>
+                        <button class="btn btn-secondary" onclick="closeDashboard()">Cancelar</button>
+                    </div>
+
+                    <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(30, 111, 255, 0.1);">
+                        <h3 style="margin-bottom: 1rem;">Zona de Peligro</h3>
+                        <button class="btn" style="background: rgba(255, 140, 66, 0.2); color: var(--hub-amber); border: 1px solid rgba(255, 140, 66, 0.3);" onclick="handleAccountDelete()">Eliminar Cuenta</button>
+                        <p style="color: var(--hub-slate); font-size: 0.85rem; margin-top: 0.75rem;">Esta acción no se puede deshacer</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== CONTACT MODAL ===== -->
+    <div class="modal" id="contactModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Agenda tu diagnóstico gratuito</h2>
+                <button class="modal-close" onclick="closeContactModal()">×</button>
+            </div>
+            
+            <form onsubmit="submitContactForm(event)">
+                <div class="form-group">
+                    <label>Nombre completo</label>
+                    <input type="text" id="contactName" placeholder="Tu nombre" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="contactEmail" placeholder="tu@email.com" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>Teléfono</label>
+                    <input type="tel" id="contactPhone" placeholder="+51 9 ____  ____" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>Empresa</label>
+                    <input type="text" id="contactCompany" placeholder="Nombre de tu empresa" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>Cuéntanos más (opcional)</label>
+                    <textarea id="contactMessage" placeholder="¿En qué podemos ayudarte?" rows="4"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="termsCheck" required>
+                        <label for="termsCheck">Acepto la política de privacidad y términos de servicio</label>
+                    </div>
+                </div>
+                
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Agendar Consultoría Gratuita</button>
+            </form>
+        </div>
+    </div>
+    
+    <!-- ===== CHECKOUT MODAL ===== -->
+    <div class="modal" id="checkoutModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Resumen de tu Carrito</h2>
+                <button class="modal-close" onclick="closeCheckoutModal()">×</button>
+            </div>
+            
+            <div id="checkoutSummary" style="margin-bottom: 2rem;"></div>
+            
+            <form onsubmit="submitCheckout(event)">
+                <h3 style="font-size: 1.25rem; margin-bottom: 1rem;">Datos de facturación</h3>
+                
+                <div class="form-group">
+                    <label>Nombre</label>
+                    <input type="text" placeholder="Tu nombre completo" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" placeholder="tu@email.com" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>Empresa</label>
+                    <input type="text" placeholder="Nombre de la empresa" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>RUC / DNI</label>
+                    <input type="text" placeholder="Número de identificación" required>
+                </div>
+                
+                <div style="background: rgba(30, 111, 255, 0.05); border: 1px solid rgba(30, 111, 255, 0.2); border-radius: 8px; padding: 1.5rem; margin-bottom: 2rem;">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 1px solid rgba(30, 111, 255, 0.1);">
+                        <span>Subtotal</span>
+                        <span id="checkoutSubtotal" style="font-family: var(--font-mono); font-weight: 600;">S/. 0</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 1rem;">
+                        <span>Impuestos (18%)</span>
+                        <span id="checkoutTax" style="font-family: var(--font-mono); font-weight: 600;">S/. 0</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; font-size: 1.25rem; font-weight: 700; color: var(--hub-pulse);">
+                        <span>Total</span>
+                        <span id="checkoutTotal" style="font-family: var(--font-mono);">S/. 0</span>
+                    </div>
+                </div>
+                
+                <button type="submit" class="btn btn-primary" style="width: 100%; font-size: 1.1rem;">Proceder al Pago</button>
+                <p style="text-align: center; margin-top: 1rem; color: var(--hub-slate); font-size: 0.85rem;">Serás redirigido a nuestro sistema de pago seguro</p>
+            </form>
+        </div>
+    </div>
+    
+    <!-- ===== CART SIDEBAR ===== -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3>Mi Carrito</h3>
+            <button class="cart-close" onclick="toggleCart()">×</button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <div class="cart-empty">Tu carrito está vacío. Explora nuestros servicios.</div>
+        </div>
+        <div class="cart-footer" style="display: none;" id="cartFooterSection">
+            <div class="cart-total">
+                <span>Total:</span>
+                <span class="cart-total-price" id="cartTotal">S/. 0</span>
+            </div>
+            <button class="btn btn-primary" style="width: 100%;" onclick="proceedToCheckout()">Ir a Checkout</button>
+            <button class="btn btn-secondary" style="width: 100%; margin-top: 0.5rem;" onclick="toggleCart()">Seguir comprando</button>
+        </div>
+    </div>
+    
+    <!-- ===== TOAST CONTAINER ===== -->
+    <div class="toast-container" id="toastContainer"></div>
+    
+    <!-- ===== BACK TO TOP BUTTON ===== -->
+    <button class="back-to-top" id="backToTop" onclick="scrollToTop()">↑</button>
+
+    <script>
+        // ===== CONFIG & STATE =====
+        const state = {
+            cart: [],
+            wishlist: [],
+            currentTestimonial: 0,
+            currentWizardStep: 1,
+            services: [
+                // Automatización e IA
+                { id: 1, category: 'ia', icon: '🤖', name: 'Agentes IA', description: 'Agentes autónomos para ventas y soporte', price: 1200 },
+                { id: 2, category: 'ia', icon: '💬', name: 'Chatbots Inteligentes', description: 'Bots con NLP para WhatsApp, web y RRSS', price: 800 },
+                { id: 3, category: 'ia', icon: '📱', name: 'WhatsApp Automation', description: 'Flujos de conversación y seguimiento automático', price: 600 },
+                { id: 4, category: 'ia', icon: '📇', name: 'CRM Inteligente', description: 'Gestión de leads y clientes con IA integrada', price: 900 },
+                // Marketing Digital
+                { id: 5, category: 'marketing', icon: '👍', name: 'Meta Ads', description: 'Campañas Facebook/Instagram optimizadas con IA', price: 1500 },
+                { id: 6, category: 'marketing', icon: '🔍', name: 'Google Ads', description: 'SEM y Display con optimización algorítmica', price: 1200 },
+                { id: 7, category: 'marketing', icon: '📈', name: 'SEO con IA', description: 'Posicionamiento orgánico acelerado con IA', price: 800 },
+                { id: 8, category: 'marketing', icon: '✉️', name: 'Email Marketing', description: 'Secuencias automatizadas de nurturing', price: 500 },
+                // Diseño y Conversión
+                { id: 9, category: 'design', icon: '🎨', name: 'Diseño Web Premium', description: 'Sitios oscuros, rápidos y con alta conversión', price: 3500, type: 'onetime' },
+                { id: 10, category: 'design', icon: '🎯', name: 'Landing Pages', description: 'Páginas de aterrizaje optimizadas para CRO', price: 1800, type: 'onetime' },
+                { id: 11, category: 'design', icon: '🔗', name: 'Embudos de Venta', description: 'Sistemas completos de captación a cierre', price: 2500, type: 'onetime' },
+                { id: 12, category: 'design', icon: '✨', name: 'Branding IA', description: 'Identidad visual generada y refinada con IA', price: 2000, type: 'onetime' },
+                // Estrategia y Crecimiento
+                { id: 13, category: 'strategy', icon: '🚀', name: 'Consultoría IA', description: 'Diagnóstico y hoja de ruta de automatización', price: 400, type: 'session' },
+                { id: 14, category: 'strategy', icon: '📊', name: 'Analytics Avanzado', description: 'Dashboard integrado y reportes inteligentes', price: 700 },
+                { id: 15, category: 'strategy', icon: '🎓', name: 'Capacitación de Equipo', description: 'Entrenamientos personalizados para tu staff', price: 1500, type: 'onetime' },
+                { id: 16, category: 'strategy', icon: '🌟', name: 'Auditoría Digital', description: 'Revisión completa de tu presencia online', price: 1200, type: 'onetime' },
+            ],
+            blogs: [
+                { id: 1, category: 'automatización', title: '5 formas en que un chatbot IA puede triplicar tus reservas', date: '15 Jun 2025', excerpt: 'Descubre cómo implementar bots inteligentes que trabajan 24/7...', emoji: '💬' },
+                { id: 2, category: 'casos', title: 'Caso real: cómo una tienda de ropa en Lima automatizó sus ventas en WhatsApp', date: '12 Jun 2025', excerpt: 'Historia de éxito: de 50 a 200 clientes mensuales...', emoji: '🛍️' },
+                { id: 3, category: 'marketing', title: 'CRM Inteligente vs CRM tradicional: qué necesita tu PYME en 2025', date: '10 Jun 2025', excerpt: 'Comparativa completa de herramientas y cuál elegir...', emoji: '📊' },
+                { id: 4, category: 'marketing', title: 'Google Ads + IA: por qué tu inversión en publicidad debería ser 3x más eficiente', date: '8 Jun 2025', excerpt: 'Optimización algorítmica para máximo ROI...', emoji: '🎯' },
+                { id: 5, category: 'tutoriales', title: 'El error más caro que cometen los hoteles boutique en LATAM', date: '5 Jun 2025', excerpt: 'Y cómo evitarlo en 3 pasos simples...', emoji: '🏨' },
+                { id: 6, category: 'automatización', title: 'Guía completa de WhatsApp Marketing para negocios peruanos', date: '1 Jun 2025', excerpt: 'Todo lo que necesitas saber para vender por WhatsApp...', emoji: '📱' },
+            ],
+            faqs: [
+                { q: '¿Cuánto tiempo tarda la implementación?', a: 'La mayoría de proyectos están operacionales en 2-4 semanas, dependiendo de la complejidad. Te daremos una timeline exacta durante la consultoría.' },
+                { q: '¿Necesito tener conocimientos técnicos?', a: 'No. Nuestro equipo se encarga de toda la instalación, configuración e integración. Tú solo controlas los resultados desde un dashboard intuitivo.' },
+                { q: '¿Los chatbots suenan robotizados?', a: 'Para nada. Nuestros chatbots usan IA conversacional avanzada y suenan 100% naturales. Los usuarios no notan la diferencia.' },
+                { q: '¿Pueden integrarse con mi sistema actual?', a: 'Sí. Trabajamos con prácticamente todas las plataformas: Shopify, WooCommerce, SAP, CRM existentes, etc. Si lo uses, podemos integrarlo.' },
+                { q: '¿Cómo se mide el ROI?', a: 'Te entregamos un dashboard en tiempo real con métricas clave: conversiones, ingresos, costo por adquisición y más. Reportes mensuales incluidos.' },
+                { q: '¿Tienen contratos de permanencia?', a: 'Ofrecemos contratos de 3, 6 y 12 meses con descuentos. Sin permanencia obligatoria. Puedes cancelar cuando quieras (aunque probablemente no querrás 😉).' },
+                { q: '¿Qué pasa si no veo resultados?', a: 'Garantizamos resultados medibles en 60 días. Si no se alcanzan los KPIs acordados, devolvemos la inversión del mes sin preguntas.' },
+                { q: '¿Trabajan con negocios de qué tamaño?', a: 'Desde startups hasta empresas medianas. Nuestro enfoque es PYMES latinoamericanas, así que entendemos tus limitaciones presupuestarias.' },
+                { q: '¿El servicio incluye soporte continuo?', a: 'Sí. Todos nuestros planes incluyen soporte por email y WhatsApp. Los planes premium incluyen soporte 24/7.' },
+                { q: '¿Pueden gestionar múltiples canales a la vez?', a: 'Claro. Un chatbot puede atender WhatsApp, Messenger, Instagram, web y más simultáneamente. Todo desde un solo panel de control.' },
+                { q: '¿Cómo se elige el mejor plan para mi negocio?', a: 'Eso es exacto lo que hacemos en la consultoría gratuita. Analizamos tu caso específico y recomendamos el plan con mejor ROI para ti.' },
+                { q: '¿Dónde están localizados?', a: 'Somos una empresa peruana con equipo en Lima. Entendemos la realidad de los negocios en LATAM mejor que cualquier agencia gringa.' },
+            ],
+            pricingPlans: [
+                {
+                    name: 'Inicio',
+                    description: 'Perfecto para empezar',
+                    price: 1500,
+                    monthlyPrice: 1500,
+                    annual: 18000,
+                    features: ['1 Chatbot básico', 'CRM simple', 'Email marketing', 'Soporte por email', 'Reportes básicos'],
+                    featured: false
+                },
+                {
+                    name: 'Crecimiento',
+                    description: 'Para negocios en expansión',
+                    price: 3500,
+                    monthlyPrice: 3500,
+                    annual: 42000,
+                    features: ['3 Chatbots avanzados', 'CRM inteligente', 'Meta Ads optimizado', 'Google Ads/SEO', 'Soporte prioritario', 'Reportes avanzados', 'Análisis competitivo'],
+                    featured: true
+                },
+                {
+                    name: 'Escala',
+                    description: 'Solución empresarial',
+                    price: 7500,
+                    monthlyPrice: 7500,
+                    annual: 90000,
+                    features: ['Agentes IA autónomos', 'CRM enterprise', 'Todas las campañas digitales', 'WhatsApp Automation', 'Soporte 24/7', 'Consultoría estratégica', 'Capacitación de equipo', 'API personalizada'],
+                    featured: false
+                }
+            ],
+            isAnnualBilling: false,
+            typingTexts: [
+                "Tu negocio crece solo. Nosotros construimos el sistema.",
+                "Automatización con IA para PYMEs que quieren escalar.",
+                "El sistema nervioso inteligente de tu negocio."
+            ],
+            currentTypingIndex: 0
+        };
+
+        // ===== LOADER =====
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                const loader = document.getElementById('loader');
+                loader.classList.add('hidden');
+            }, 1500);
+        });
+
+        // ===== TYPING EFFECT =====
+        function typeText() {
+            const texts = state.typingTexts;
+            const currentIndex = state.currentTypingIndex;
+            const text = texts[currentIndex];
+            const typingElement = document.getElementById('typingText');
+            let charIndex = 0;
+
+            function type() {
+                if (charIndex < text.length) {
+                    typingElement.textContent += text.charAt(charIndex);
+                    charIndex++;
+                    setTimeout(type, 50);
+                } else {
+                    setTimeout(() => {
+                        typingElement.textContent = '';
+                        state.currentTypingIndex = (currentIndex + 1) % texts.length;
+                        typeText();
+                    }, 3000);
+                }
+            }
+
+            type();
+        }
+
+        // ===== PARTICLE CANVAS =====
+        function initParticles() {
+            const canvas = document.getElementById('particleCanvas');
+            const ctx = canvas.getContext('2d');
+            
+            canvas.width = canvas.offsetWidth;
+            canvas.height = canvas.offsetHeight;
+
+            const isMobile = window.innerWidth < 768;
+            const particleCount = isMobile ? 40 : 80;
+            const particles = [];
+
+            class Particle {
+                constructor() {
+                    this.x = Math.random() * canvas.width;
+                    this.y = Math.random() * canvas.height;
+                    this.vx = (Math.random() - 0.5) * 0.5;
+                    this.vy = (Math.random() - 0.5) * 0.5;
+                    this.radius = Math.random() * 2 + 1;
+                }
+
+                update() {
+                    this.x += this.vx;
+                    this.y += this.vy;
+
+                    if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+                    if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+                }
+
+                draw() {
+                    ctx.fillStyle = 'rgba(30, 111, 255, 0.5)';
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+            }
+
+            for (let i = 0; i < particleCount; i++) {
+                particles.push(new Particle());
+            }
+
+            function animate() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                particles.forEach(p => {
+                    p.update();
+                    p.draw();
+                });
+
+                particles.forEach((p1, i) => {
+                    particles.forEach((p2, j) => {
+                        if (i < j) {
+                            const dx = p1.x - p2.x;
+                            const dy = p1.y - p2.y;
+                            const distance = Math.sqrt(dx * dx + dy * dy);
+
+                            if (distance < 150) {
+                                ctx.strokeStyle = `rgba(30, 111, 255, ${0.2 * (1 - distance / 150)})`;
+                                ctx.lineWidth = 1;
+                                ctx.beginPath();
+                                ctx.moveTo(p1.x, p1.y);
+                                ctx.lineTo(p2.x, p2.y);
+                                ctx.stroke();
+                            }
+                        }
+                    });
+                });
+
+                requestAnimationFrame(animate);
+            }
+
+            animate();
+
+            window.addEventListener('resize', () => {
+                canvas.width = canvas.offsetWidth;
+                canvas.height = canvas.offsetHeight;
+            });
+        }
+
+        // ===== CURSOR GLOW =====
+        function initCursorGlow() {
+            const glow = document.querySelector('.cursor-glow');
+            if (!glow) return;
+
+            document.addEventListener('mousemove', (e) => {
+                glow.style.left = (e.clientX - 150) + 'px';
+                glow.style.top = (e.clientY - 150) + 'px';
+            });
+        }
+
+        // ===== SCROLL REVEAL =====
+        function initScrollReveal() {
+            const revealElements = document.querySelectorAll('.card, .blog-card, .process-step, .plan-card, .faq-item');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.15 });
+
+            revealElements.forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(30px)';
+                el.style.transition = 'all 0.6s ease';
+                observer.observe(el);
+            });
+        }
+
+        // ===== ANIMATED COUNTERS =====
+        function initCounters() {
+            const counters = document.querySelectorAll('[data-count]');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && !entry.target.classList.contains('counted')) {
+                        const target = parseInt(entry.target.dataset.count);
+                        const duration = 2000;
+                        const start = Date.now();
+
+                        function update() {
+                            const progress = (Date.now() - start) / duration;
+                            if (progress < 1) {
+                                entry.target.textContent = Math.floor(target * progress);
+                                requestAnimationFrame(update);
+                            } else {
+                                entry.target.textContent = target;
+                                entry.target.classList.add('counted');
+                            }
+                        }
+
+                        update();
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            counters.forEach(counter => observer.observe(counter));
+        }
+
+        // ===== NAVBAR SCROLL BEHAVIOR =====
+        let lastScrollTop = 0;
+        const navbar = document.querySelector('nav');
+        const menuToggle = document.querySelector('.menu-toggle');
+
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+            if (scrollTop > 60) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+
+            lastScrollTop = scrollTop;
+        });
+
+        // Mobile menu toggle
+        menuToggle.addEventListener('click', () => {
+            const menu = document.querySelector('.navbar-menu');
+            menu.classList.toggle('active');
+            menuToggle.classList.toggle('active');
+        });
+
+        // Close menu on link click
+        document.querySelectorAll('.navbar-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.querySelector('.navbar-menu').classList.remove('active');
+                menuToggle.classList.remove('active');
+            });
+        });
+
+        // ===== BACK TO TOP =====
+        const backToTopBtn = document.getElementById('backToTop');
+
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopBtn.classList.add('show');
+            } else {
+                backToTopBtn.classList.remove('show');
+            }
+        });
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // ===== RENDER SERVICES =====
+        function renderServices(category = 'ia') {
+            const grid = document.getElementById('servicesGrid');
+            const filtered = state.services.filter(s => s.category === category);
+
+            grid.innerHTML = filtered.map(service => `
+                <div class="card service-card" data-service-id="${service.id}">
+                    <div class="service-icon">${service.icon}</div>
+                    <h3 class="service-name">${service.name}</h3>
+                    <p class="service-description">${service.description}</p>
+                    <div class="service-price">
+                        S/. ${service.price}${!service.type || service.type === '' ? '/mes' : service.type === 'onetime' ? '' : '/sesión'}
+                    </div>
+                    <div class="service-actions">
+                        <button class="btn btn-primary btn-add-cart" onclick="addToCart(${service.id})">Agregar</button>
+                        <button class="btn-wishlist ${state.wishlist.includes(service.id) ? 'active' : ''}" onclick="toggleWishlist(${service.id})">♥</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function filterServices(category) {
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            renderServices(category);
+        }
+
+        // ===== DASHBOARD FUNCTIONS =====
+        function openDashboard() {
+            document.getElementById('dashboardModal').classList.add('active');
+            renderDashboard();
+        }
+
+        function closeDashboard() {
+            document.getElementById('dashboardModal').classList.remove('active');
+        }
+
+        function switchDashboardTab(tab) {
+            document.querySelectorAll('.dashboard-content').forEach(c => c.classList.remove('active'));
+            document.querySelectorAll('.dashboard-tab').forEach(t => t.classList.remove('active'));
+            
+            document.getElementById(`${tab}-tab`).classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        function renderDashboard() {
+            const orders = JSON.parse(localStorage.getItem('orders')) || [];
+            
+            // Stats
+            const activeServices = orders.filter(o => o.status === 'active').length;
+            const monthlySpend = orders
+                .filter(o => o.status === 'active')
+                .reduce((sum, o) => sum + o.price, 0);
+
+            document.getElementById('activServicesCount').textContent = activeServices;
+            document.getElementById('monthlySpendValue').textContent = `S/. ${monthlySpend.toLocaleString()}`;
+            
+            // Próxima facturación
+            if (activeServices > 0) {
+                const today = new Date();
+                const nextBilling = new Date(today.getFullYear(), today.getMonth() + 1, today.getDate());
+                document.getElementById('nextBillingDate').textContent = nextBilling.toLocaleDateString('es-PE');
+            }
+
+            // Servicios activos
+            renderActiveServices(orders);
+            
+            // Historial
+            renderPurchaseHistory(orders);
+            
+            // Facturas
+            renderInvoices(orders);
+        }
+
+        function renderActiveServices(orders) {
+            const container = document.getElementById('activeServicesList');
+            const activeOrders = orders.filter(o => o.status === 'active');
+
+            if (activeOrders.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <h3>No tienes servicios activos</h3>
+                        <p>Comienza a agregar servicios a tu carrito y completa el checkout</p>
+                        <button class="btn btn-primary" onclick="closeDashboard(); document.getElementById('servicios').scrollIntoView({behavior: 'smooth'});">Explorar Servicios</button>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = activeOrders.map((order, idx) => `
+                <div class="service-contract success">
+                    <div class="service-contract-info">
+                        <h3>${order.serviceName}</h3>
+                        <p style="color: var(--hub-slate); margin-bottom: 1rem;">${order.serviceDescription}</p>
+                        <div class="service-contract-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Contratado</div>
+                                <div class="detail-value">${new Date(order.purchaseDate).toLocaleDateString('es-PE')}</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Precio Mensual</div>
+                                <div class="detail-value">S/. ${order.price.toLocaleString()}</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Próxima Renovación</div>
+                                <div class="detail-value">${new Date(order.nextRenewal).toLocaleDateString('es-PE')}</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Facturación</div>
+                                <div class="detail-value">${order.billingCycle === 'monthly' ? 'Mensual' : 'Anual'}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="service-contract-actions">
+                        <div class="service-contract-status status-active">✓ ACTIVO</div>
+                        <button class="btn btn-secondary" onclick="upgradeService(${idx})" style="font-size: 0.9rem; padding: 0.65rem;">Ampliar Servicio</button>
+                        <button class="btn" style="background: rgba(255, 140, 66, 0.2); color: var(--hub-amber); border: 1px solid rgba(255, 140, 66, 0.3); font-size: 0.9rem; padding: 0.65rem;" onclick="cancelService(${idx})">Cancelar</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function renderPurchaseHistory(orders) {
+            const container = document.getElementById('purchaseHistory');
+
+            if (orders.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <h3>Sin historial de compras</h3>
+                        <p>Aún no has realizado ninguna compra. ¡Comienza hoy!</p>
+                        <button class="btn btn-primary" onclick="closeDashboard(); document.getElementById('servicios').scrollIntoView({behavior: 'smooth'});">Ver Servicios</button>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = `
+                <div class="services-list">
+                    ${orders.map((order, idx) => `
+                        <div class="service-contract ${order.status === 'active' ? 'success' : 'inactive'}">
+                            <div class="service-contract-info">
+                                <h3>${order.serviceName}</h3>
+                                <p style="color: var(--hub-slate); margin-bottom: 1rem;">Compra #${String(idx + 1).padStart(6, '0')}</p>
+                                <div class="service-contract-details">
+                                    <div class="detail-item">
+                                        <div class="detail-label">Fecha de Compra</div>
+                                        <div class="detail-value">${new Date(order.purchaseDate).toLocaleDateString('es-PE')}</div>
+                                    </div>
+                                    <div class="detail-item">
+                                        <div class="detail-label">Monto Total</div>
+                                        <div class="detail-value">S/. ${order.total.toLocaleString()}</div>
+                                    </div>
+                                    <div class="detail-item">
+                                        <div class="detail-label">Método de Pago</div>
+                                        <div class="detail-value">${order.paymentMethod || 'Tarjeta'}</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="service-contract-actions">
+                                <div class="service-contract-status ${order.status === 'active' ? 'status-active' : order.status === 'completed' ? 'status-completed' : 'status-pending'}">
+                                    ${order.status === 'active' ? '✓ ACTIVO' : order.status === 'completed' ? '✓ COMPLETADO' : '⏳ PENDIENTE'}
+                                </div>
+                                <button class="btn btn-secondary" onclick="downloadReceipt(${idx})" style="font-size: 0.9rem; padding: 0.65rem;">Ver Recibo</button>
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+        }
+
+        function renderInvoices(orders) {
+            const container = document.getElementById('invoicesTable');
+
+            if (orders.length === 0) {
+                container.innerHTML = `<tr><td colspan="5" style="text-align: center; color: var(--hub-slate);">No hay facturas disponibles</td></tr>`;
+                return;
+            }
+
+            container.innerHTML = orders.map((order, idx) => `
+                <tr>
+                    <td>${new Date(order.purchaseDate).toLocaleDateString('es-PE')}</td>
+                    <td>${order.serviceName}</td>
+                    <td style="font-weight: 600; color: var(--hub-pulse);">S/. ${order.total.toLocaleString()}</td>
+                    <td>
+                        <span class="service-contract-status ${order.status === 'active' ? 'status-active' : 'status-completed'}" style="padding: 0.35rem 0.75rem; font-size: 0.75rem;">
+                            ${order.status === 'active' ? 'Pagada' : 'Completada'}
+                        </span>
+                    </td>
+                    <td>
+                        <a class="invoice-link" onclick="downloadInvoice(${idx})" style="cursor: pointer;">📥 Descargar</a>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        function downloadReceipt(idx) {
+            showToast('Descargando recibo...', 'info');
+            setTimeout(() => {
+                showToast('Recibo descargado exitosamente', 'success');
+            }, 1000);
+        }
+
+        function downloadInvoice(idx) {
+            showToast('Descargando factura XML...', 'info');
+            setTimeout(() => {
+                showToast('Factura descargada exitosamente', 'success');
+            }, 1000);
+        }
+
+        function upgradeService(idx) {
+            showToast('Abriendo opciones de ampliación...', 'info');
+        }
+
+        function cancelService(idx) {
+            if (confirm('¿Estás seguro de que quieres cancelar este servicio? Se cancelará al final del período de facturación.')) {
+                showToast('Solicitud de cancelación enviada. Nos contactaremos pronto.', 'success');
+            }
+        }
+
+        function saveProfile() {
+            const profile = {
+                name: document.getElementById('profileName').value,
+                email: document.getElementById('profileEmail').value,
+                company: document.getElementById('profileCompany').value,
+                phone: document.getElementById('profilePhone').value,
+                industry: document.getElementById('profileIndustry').value
+            };
+
+            if (!profile.name || !profile.email) {
+                showToast('Por favor completa todos los campos requeridos', 'error');
+                return;
+            }
+
+            localStorage.setItem('userProfile', JSON.stringify(profile));
+            showToast('Perfil actualizado correctamente', 'success');
+        }
+
+        function handleAccountDelete() {
+            if (confirm('⚠️ Esta acción eliminará permanentemente tu cuenta y todos tus datos. ¿Estás seguro?')) {
+                if (confirm('Por favor escribe SI para confirmar la eliminación')) {
+                    localStorage.clear();
+                    showToast('Cuenta eliminada. Redirigiendo...', 'success');
+                    setTimeout(() => {
+                        location.reload();
+                    }, 2000);
+                }
+            }
+        }
+
+        function loadUserProfile() {
+            const profile = JSON.parse(localStorage.getItem('userProfile'));
+            if (profile) {
+                document.getElementById('profileName').value = profile.name || '';
+                document.getElementById('profileEmail').value = profile.email || '';
+                document.getElementById('profileCompany').value = profile.company || '';
+                document.getElementById('profilePhone').value = profile.phone || '';
+                document.getElementById('profileIndustry').value = profile.industry || '';
+            }
+        }
+
+        function updateCartBadge() {
+            const badge = document.getElementById('cartBadge');
+            const count = state.cart.length;
+            if (count > 0) {
+                badge.textContent = count;
+                badge.style.display = 'flex';
+            } else {
+                badge.style.display = 'none';
+            }
+        }
+
+        // ===== CART FUNCTIONS (ACTUALIZADO) =====
+        function addToCart(serviceId) {
+            const service = state.services.find(s => s.id === serviceId);
+            if (service) {
+                state.cart.push(service);
+                showToast(`${service.name} agregado al carrito`, 'success');
+                updateCart();
+                updateCartBadge();
+                localStorage.setItem('cart', JSON.stringify(state.cart));
+            }
+        }
+
+        function removeFromCart(serviceId) {
+            state.cart = state.cart.filter((_, i) => i !== serviceId);
+            updateCart();
+            updateCartBadge();
+            localStorage.setItem('cart', JSON.stringify(state.cart));
+        }
+
+        function updateCart() {
+            const cartItems = document.getElementById('cartItems');
+            const cartFooter = document.getElementById('cartFooterSection');
+
+            if (state.cart.length === 0) {
+                cartItems.innerHTML = '<div class="cart-empty">Tu carrito está vacío. Explora nuestros servicios.</div>';
+                cartFooter.style.display = 'none';
+                return;
+            }
+
+            cartFooter.style.display = 'block';
+
+            cartItems.innerHTML = state.cart.map((service, index) => `
+                <div class="cart-item">
+                    <div class="cart-item-info">
+                        <h4>${service.name}</h4>
+                        <div class="cart-item-price">S/. ${service.price}</div>
+                    </div>
+                    <button class="cart-item-remove" onclick="removeFromCart(${index})" title="Eliminar">×</button>
+                </div>
+            `).join('');
+
+            const total = state.cart.reduce((sum, s) => sum + s.price, 0);
+            document.getElementById('cartTotal').textContent = `S/. ${total.toLocaleString()}`;
+        }
+
+        function toggleCart() {
+            document.getElementById('cartSidebar').classList.toggle('open');
+        }
+
+        function proceedToCheckout() {
+            if (state.cart.length === 0) {
+                showToast('Tu carrito está vacío', 'error');
+                return;
+            }
+
+            const subtotal = state.cart.reduce((sum, s) => sum + s.price, 0);
+            const tax = Math.round(subtotal * 0.18);
+            const total = subtotal + tax;
+
+            document.getElementById('checkoutSummary').innerHTML = `
+                <div style="background: rgba(30, 111, 255, 0.05); border: 1px solid rgba(30, 111, 255, 0.2); border-radius: 8px; padding: 1.5rem;">
+                    <h3 style="margin-bottom: 1rem;">Servicios seleccionados:</h3>
+                    ${state.cart.map(s => `
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 0.75rem; padding-bottom: 0.75rem; border-bottom: 1px solid rgba(30, 111, 255, 0.1);">
+                            <span>${s.name}</span>
+                            <span style="font-family: var(--font-mono); font-weight: 600;">S/. ${s.price}</span>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+
+            document.getElementById('checkoutSubtotal').textContent = `S/. ${subtotal.toLocaleString()}`;
+            document.getElementById('checkoutTax').textContent = `S/. ${tax.toLocaleString()}`;
+            document.getElementById('checkoutTotal').textContent = `S/. ${total.toLocaleString()}`;
+
+            toggleCart();
+            document.getElementById('checkoutModal').classList.add('active');
+        }
+
+        function submitCheckout(e) {
+            e.preventDefault();
+            
+            // Crear órdenes para cada servicio en el carrito
+            const orders = JSON.parse(localStorage.getItem('orders')) || [];
+            const today = new Date();
+            
+            state.cart.forEach(service => {
+                const order = {
+                    id: `ORD-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
+                    serviceId: service.id,
+                    serviceName: service.name,
+                    serviceDescription: service.description,
+                    price: service.price,
+                    total: service.price + (Math.round(service.price * 0.18)),
+                    purchaseDate: today.toISOString(),
+                    nextRenewal: new Date(today.getFullYear(), today.getMonth() + 1, today.getDate()).toISOString(),
+                    billingCycle: 'monthly',
+                    status: 'active',
+                    paymentMethod: 'Tarjeta de Crédito',
+                    invoiceNumber: `FAC-${String(orders.length + 1).padStart(6, '0')}`
+                };
+                orders.push(order);
+            });
+            
+            localStorage.setItem('orders', JSON.stringify(orders));
+            
+            showToast('¡Pago procesado exitosamente! Tus servicios ya están activos.', 'success');
+            setTimeout(() => {
+                state.cart = [];
+                updateCart();
+                updateCartBadge();
+                localStorage.setItem('cart', JSON.stringify(state.cart));
+                document.getElementById('checkoutModal').classList.remove('active');
+                toggleCart();
+                showToast('Puedes ver tus servicios en Mi Cuenta', 'info');
+            }, 1500);
+        }
+
+        function closeCheckoutModal() {
+            document.getElementById('checkoutModal').classList.remove('active');
+        }
+
+        // ===== WISHLIST =====
+        function toggleWishlist(serviceId) {
+            const index = state.wishlist.indexOf(serviceId);
+            if (index > -1) {
+                state.wishlist.splice(index, 1);
+            } else {
+                state.wishlist.push(serviceId);
+            }
+
+            document.querySelectorAll(`[data-service-id="${serviceId}"] .btn-wishlist`).forEach(btn => {
+                btn.classList.toggle('active');
+            });
+
+            localStorage.setItem('wishlist', JSON.stringify(state.wishlist));
+            showToast('Wishlist actualizada', 'success');
+        }
+
+        // ===== TESTIMONIALS =====
+        function showTestimonial(index) {
+            const cards = document.querySelectorAll('.testimonial-card');
+            const dots = document.querySelectorAll('.testimonial-dot');
+
+            cards.forEach((card, i) => {
+                card.classList.remove('active', 'prev');
+                if (i === index) {
+                    card.classList.add('active');
+                } else if (i < index) {
+                    card.classList.add('prev');
+                }
+            });
+
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === index);
+            });
+
+            state.currentTestimonial = index;
+        }
+
+        // Auto-rotate testimonials
+        setInterval(() => {
+            const nextIndex = (state.currentTestimonial + 1) % 4;
+            showTestimonial(nextIndex);
+        }, 6000);
+
+        // ===== PRICING =====
+        function renderPricingPlans() {
+            const container = document.getElementById('pricingPlans');
+            container.innerHTML = state.pricingPlans.map(plan => `
+                <div class="plan-card ${plan.featured ? 'featured' : ''}">
+                    ${plan.featured ? '<div class="plan-badge">RECOMENDADO</div>' : ''}
+                    <div class="card" style="height: 100%; display: flex; flex-direction: column;">
+                        <h3 class="plan-name">${plan.name}</h3>
+                        <p class="plan-description">${plan.description}</p>
+                        <div class="plan-price">S/. ${state.isAnnualBilling ? Math.round(plan.annual / 12) : plan.monthlyPrice}</div>
+                        <div class="plan-period">${state.isAnnualBilling ? 'por mes (anual)' : 'por mes'}</div>
+                        <ul class="plan-features">
+                            ${plan.features.map(f => `<li>${f}</li>`).join('')}
+                        </ul>
+                        <button class="btn btn-primary" style="margin-top: auto;" onclick="openContactModal()">Elegir Plan</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function togglePricingCycle(toggle) {
+            state.isAnnualBilling = !state.isAnnualBilling;
+            toggle.classList.toggle('active');
+            renderPricingPlans();
+        }
+
+        // ===== WIZARD / ROI CALCULATOR =====
+        function nextStep() {
+            if (state.currentWizardStep < 3) {
+                state.currentWizardStep++;
+                showStep(state.currentWizardStep);
+            }
+        }
+
+        function prevStep() {
+            if (state.currentWizardStep > 1) {
+                state.currentWizardStep--;
+                showStep(state.currentWizardStep);
+            }
+        }
+
+        function goToStep(step) {
+            state.currentWizardStep = step;
+            showStep(step);
+        }
+
+        function showStep(step) {
+            document.querySelectorAll('.wizard-step').forEach(s => s.classList.remove('active'));
+            document.getElementById(`step${step}`).classList.add('active');
+
+            document.querySelectorAll('.progress-step').forEach((p, i) => {
+                p.classList.toggle('active', i + 1 === step);
+                p.classList.toggle('completed', i + 1 < step);
+            });
+        }
+
+        function updateCalculator() {
+            if (state.currentWizardStep === 3) {
+                // Calculate based on inputs
+                const industry = document.getElementById('industry').value;
+                const employees = document.getElementById('employees').value;
+                const revenue = document.getElementById('revenue').value;
+
+                let plan = 'Crecimiento';
+                let investment = 3500;
+                let services = 'Chatbots + CRM Inteligente';
+                let roiBase = 15000;
+
+                if (revenue === 'large') {
+                    plan = 'Escala';
+                    investment = 7500;
+                    services = 'Suite Completa (IA + Marketing + Analytics)';
+                    roiBase = 35000;
+                } else if (revenue === 'medium') {
+                    plan = 'Crecimiento';
+                    investment = 3500;
+                    services = 'Chatbots + CRM + Meta Ads';
+                    roiBase = 15000;
+                } else {
+                    plan = 'Inicio';
+                    investment = 1500;
+                    services = 'Chatbot Básico + Email Marketing';
+                    roiBase = 8000;
+                }
+
+                document.getElementById('planName').textContent = plan;
+                document.getElementById('servicesRecommended').textContent = services;
+                document.getElementById('estimatedInvestment').textContent = `S/. ${investment.toLocaleString()}/mes`;
+                document.getElementById('projectedRoi').textContent = `S/. ${roiBase.toLocaleString()}`;
+                document.getElementById('roiPercentage').textContent = `${Math.round((roiBase / (investment * 6)) * 100)}%`;
+            }
+        }
+
+        // ===== BLOG =====
+        function renderBlogPosts(filter = 'todos') {
+            const grid = document.getElementById('blogGrid');
+            const filtered = filter === 'todos' ? state.blogs : state.blogs.filter(b => b.category === filter);
+
+            grid.innerHTML = filtered.map(blog => `
+                <div class="card blog-card">
+                    <div class="blog-image">${blog.emoji}</div>
+                    <div class="blog-date">${blog.date}</div>
+                    <h3 class="blog-title">${blog.title}</h3>
+                    <p class="blog-excerpt">${blog.excerpt}</p>
+                    <div class="blog-meta">
+                        <span class="blog-category">${blog.category}</span>
+                        <span class="blog-read-time">5 min lectura</span>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function filterBlog(category) {
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            renderBlogPosts(category);
+        }
+
+        // ===== FAQ =====
+        function renderFAQ() {
+            const container = document.getElementById('faqContainer');
+            container.innerHTML = state.faqs.map((faq, index) => `
+                <div class="faq-item" onclick="toggleFAQ(${index})">
+                    <div class="faq-question">
+                        <div class="faq-question-text">${faq.q}</div>
+                        <div class="faq-toggle">+</div>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">${faq.a}</div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function toggleFAQ(index) {
+            const items = document.querySelectorAll('.faq-item');
+            items[index].classList.toggle('active');
+        }
+
+        // ===== CONTACT MODAL =====
+        function openContactModal() {
+            document.getElementById('contactModal').classList.add('active');
+        }
+
+        function closeContactModal() {
+            document.getElementById('contactModal').classList.remove('active');
+        }
+
+        function submitContactForm(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('contactName').value;
+            const email = document.getElementById('contactEmail').value;
+            const phone = document.getElementById('contactPhone').value;
+            const company = document.getElementById('contactCompany').value;
+
+            if (!email.includes('@')) {
+                showToast('Por favor ingresa un email válido', 'error');
+                return;
+            }
+
+            showToast('¡Listo! Te contactaremos en menos de 24 horas.', 'success');
+            
+            setTimeout(() => {
+                document.getElementById('contactModal').classList.remove('active');
+                document.getElementById('contactModal').reset();
+            }, 1500);
+        }
+
+        // ===== TOASTS =====
+        function showToast(message, type = 'info') {
+            const container = document.getElementById('toastContainer');
+            const toast = document.createElement('div');
+            toast.className = `toast ${type}`;
+            
+            const icons = {
+                success: '✓',
+                error: '✕',
+                info: 'ℹ'
+            };
+
+            toast.innerHTML = `
+                <div class="toast-icon">${icons[type] || '!'}</div>
+                <div class="toast-content">${message}</div>
+                <button class="toast-close" onclick="this.parentElement.remove()">×</button>
+            `;
+
+            container.appendChild(toast);
+
+            setTimeout(() => {
+                toast.remove();
+            }, 4000);
+        }
+
+        // ===== NEWSLETTER =====
+        function subscribeNewsletter() {
+            const email = document.getElementById('newsletterEmail').value;
+            if (email && email.includes('@')) {
+                showToast('¡Suscripción confirmada! Revisa tu email.', 'success');
+                document.getElementById('newsletterEmail').value = '';
+            } else {
+                showToast('Por favor ingresa un email válido', 'error');
+            }
+        }
+
+        // ===== LOCAL STORAGE LOAD =====
+        function loadFromLocalStorage() {
+            const savedCart = localStorage.getItem('cart');
+            const savedWishlist = localStorage.getItem('wishlist');
+
+            if (savedCart) state.cart = JSON.parse(savedCart);
+            if (savedWishlist) state.wishlist = JSON.parse(savedWishlist);
+
+            updateCart();
+        }
+
+        // ===== INIT =====
+        document.addEventListener('DOMContentLoaded', () => {
+            typeText();
+            initParticles();
+            initCursorGlow();
+            setTimeout(initScrollReveal, 500);
+            initCounters();
+            renderServices('ia');
+            renderPricingPlans();
+            renderBlogPosts('todos');
+            renderFAQ();
+            loadFromLocalStorage();
+            loadUserProfile();
+            updateCartBadge();
+        });
+
+        // Close modal on ESC
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                document.getElementById('contactModal').classList.remove('active');
+                document.getElementById('checkoutModal').classList.remove('active');
+                document.getElementById('dashboardModal').classList.remove('active');
+            }
+        });
+
+        // Close modal on outside click
+        document.querySelectorAll('.modal, .dashboard-modal').forEach(modal => {
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.classList.remove('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
